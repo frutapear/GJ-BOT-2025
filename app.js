@@ -1,34 +1,27 @@
-const  {createBot, createProvider, createFlow, addKeyword, EVENTS}  = require('@bot-whatsapp/bot')
+const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot');
 require('dotenv').config();
 
 const qrcode = require('qrcode-terminal');
-provider.on('qr', (qr) => {
-    console.log('🔐 Escanea este código QR con tu WhatsApp:');
-    qrcode.toFile('bot.qr.png', qr, (err) => {
-        if (err) {
-            console.error('Error al guardar el QR:', err);
-        } else {
-            console.log('QR guardado como bot.qr.png');
-        }
-    });
-});
 
-const BaileysProvider = require('@bot-whatsapp/provider/baileys')
-const path = require("path")
-const fs = require("fs")
+const BaileysProvider = require('@bot-whatsapp/provider/baileys');
+const path = require("path");
+const fs = require("fs");
 
+// Aquí inicializas el provider primero
 const provider = new BaileysProvider({
     name: 'baileys',
     storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
 });
 
-
+// Ahora puedes escuchar el evento `qr`
 provider.on('qr', (qr) => {
     console.log('🔐 Escanea este código QR con tu WhatsApp:');
     qrcode.generate(qr, { small: true }); // Muestra el QR en la terminal
 });
 
-const MockAdapter = require('@bot-whatsapp/database/mock')
+// Asegúrate de que el resto de tu código siga después
+const MockAdapter = require('@bot-whatsapp/database/mock');
+
 
 //DECLARACIONES PATH/OBJECTS//
 const menuPath = path.join(__dirname, "mensajes", "menu.txt")

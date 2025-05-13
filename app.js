@@ -2,7 +2,16 @@ const  {createBot, createProvider, createFlow, addKeyword, EVENTS}  = require('@
 require('dotenv').config();
 
 const qrcode = require('qrcode-terminal');
-
+provider.on('qr', (qr) => {
+    console.log('🔐 Escanea este código QR con tu WhatsApp:');
+    qrcode.toFile('bot.qr.png', qr, (err) => {
+        if (err) {
+            console.error('Error al guardar el QR:', err);
+        } else {
+            console.log('QR guardado como bot.qr.png');
+        }
+    });
+});
 
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const path = require("path")

@@ -3,12 +3,14 @@ require('dotenv').config();
 
 
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
-const MockAdapter = require('@bot-whatsapp/database/mock')
-
-
 const path = require("path")
 const fs = require("fs")
 
+const provider = new BaileysProvider({
+    name: 'baileys',
+    storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
+});
+const MockAdapter = require('@bot-whatsapp/database/mock')
 
 //DECLARACIONES PATH/OBJECTS//
 const menuPath = path.join(__dirname, "mensajes", "menu.txt")

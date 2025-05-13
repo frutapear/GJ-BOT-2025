@@ -15,9 +15,11 @@ const provider = new BaileysProvider({
 
 // Ahora puedes escuchar el evento `qr`
 provider.on('qr', (qr) => {
-    console.log('🔐 Escanea este código QR con tu WhatsApp:');
-    qrcode.generate(qr, { small: true }); // Muestra el QR en la terminal
+    console.log('🔐 Escaneando QR...');
+    console.log(qr);  // Verifica que QR contiene los datos esperados
+    qrcode.generate(qr, { small: true });
 });
+
 
 // Asegúrate de que el resto de tu código siga después
 const MockAdapter = require('@bot-whatsapp/database/mock');

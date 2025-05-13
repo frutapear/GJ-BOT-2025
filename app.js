@@ -1,6 +1,8 @@
 const  {createBot, createProvider, createFlow, addKeyword, EVENTS}  = require('@bot-whatsapp/bot')
 require('dotenv').config();
 
+const qrcode = require('qrcode-terminal');
+
 
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const path = require("path")
@@ -11,7 +13,6 @@ const provider = new BaileysProvider({
     storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
 });
 
-const qrcode = require('qrcode-terminal');
 
 provider.on('qr', (qr) => {
     console.log('🔐 Escanea este código QR con tu WhatsApp:');
@@ -237,8 +238,6 @@ const main = async () => {
         provider: adapterProvider,
         database: adapterDB,
     })
-
-    QRPortalWeb()
 }
 
 main()

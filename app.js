@@ -10,6 +10,14 @@ const provider = new BaileysProvider({
     name: 'baileys',
     storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
 });
+
+const qrcode = require('qrcode-terminal');
+
+provider.on('qr', (qr) => {
+    console.log('🔐 Escanea este código QR con tu WhatsApp:');
+    qrcode.generate(qr, { small: true }); // Muestra el QR en la terminal
+});
+
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 //DECLARACIONES PATH/OBJECTS//

@@ -1,3 +1,13 @@
+provider.on('qr', (qr) => {
+    // 1) Muestra el QR en ASCII (si quieres):
+    const qrcodeTerminal = require('qrcode-terminal');
+    qrcodeTerminal.generate(qr, { small: true });
+
+    // 2) Imprime un enlace que genera el QR como imagen:
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
+    console.log(`\n🔗 Abre este enlace en tu navegador para ver el QR como imagen:\n${url}\n`);
+});
+
 const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot');
 require('dotenv').config();
 
@@ -13,15 +23,7 @@ const provider = new BaileysProvider({
     storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
 });
 
-provider.on('qr', (qr) => {
-    // 1) Muestra el QR en ASCII (si quieres):
-    const qrcodeTerminal = require('qrcode-terminal');
-    qrcodeTerminal.generate(qr, { small: true });
 
-    // 2) Imprime un enlace que genera el QR como imagen:
-    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
-    console.log(`\n🔗 Abre este enlace en tu navegador para ver el QR como imagen:\n${url}\n`);
-});
 
 // Asegúrate de que el resto de tu código siga después
 const MockAdapter = require('@bot-whatsapp/database/mock');

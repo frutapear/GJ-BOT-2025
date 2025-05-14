@@ -1,32 +1,24 @@
-provider.on('qr', (qr) => {
-    // 1) Muestra el QR en ASCII (si quieres):
-    const qrcodeTerminal = require('qrcode-terminal');
-    qrcodeTerminal.generate(qr, { small: true });
-
-    // 2) Imprime un enlace que genera el QR como imagen:
-    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
-    console.log(`\n🔗 Abre este enlace en tu navegador para ver el QR como imagen:\n${url}\n`);
-});
-
 const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot');
 require('dotenv').config();
 
-const qrcode = require('qrcode-terminal');
-
+const qrcodeTerminal = require('qrcode-terminal');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
+const MockAdapter = require('@bot-whatsapp/database/mock');
 const path = require("path");
 const fs = require("fs");
 
-// Aquí inicializas el provider primero
+
 const provider = new BaileysProvider({
     name: 'baileys',
     storePath: path.resolve(__dirname, './base-baileys-memory/bot_sessions/baileys_store.json'),
 });
 
 
-
-// Asegúrate de que el resto de tu código siga después
-const MockAdapter = require('@bot-whatsapp/database/mock');
+provider.on('qr', (qr) => {
+    qrcodeTerminal.generate(qr, { small: true });
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
+    console.log(`\n🔗 Abre este enlace en tu navegador para ver el QR como imagen:\n${url}\n`);
+});
 
 
 //DECLARACIONES PATH/OBJECTS//

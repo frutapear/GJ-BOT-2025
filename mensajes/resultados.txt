@@ -5,8 +5,21 @@ Estos son los resultados PAP/Biopsia:
 ✅ *3609-16*/Senasa/ PAP
 
 
-❌ *6613-22*/Senasa/ PAP
-❌ *7059-24*/Privado/ ARN APTIMA
-❌ *6645-22*/Privado/ BIOPSIA
+Privado:
+❌ *00-7082-24*/ Privado/ ARN
+❌ *00-4537-17*/ Privado/ Thin Prep (PAP)
+❌ *00-7131-25*/ Privado / ARN
+❌ *00-7236-25*/ Privado/ Thin Prep (PAP)
+❌ *00-4518-17*/ Privado / ARN
+
+Asegurado:
+❌ *00-6703-23/ Senasa/ Thin Prep (PAP)
+❌ *00-3293-16*/ Mapfre/ Thin Prep (PAP)
+❌ *00-200-10*/ Senasa / Thin Prep (PAP)
+❌ *00-5521-20*/ Senasa / Thin Prep (PAP)
+❌ *00-2608-14*/ Primera Humano / Thin Prep (PAP)
+❌ *00-7104-24*/ Humano / Thin Prep (PAP)
+❌ *00-5097-19*/ Senasa / Thin Prep (PAP)
+
 
 Para volver al menú principal, escriba *"menú"*.

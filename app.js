@@ -231,7 +231,8 @@ const menuFlow = addKeyword(['menu','Menu','Menú']).addAnswer(
 const main = async () => {
     const adapterDB = new MockAdapter
     const adapterFlow = createFlow([flowPrincipal, menuFlow, flowDuda, flowCuenta, flowOtro, flowReceta, cuentasFlow, flowCuentasB, flowCuentasBHD, flowCuentasP, flowServ, flowEmb, flowPap])
-    const adapterProvider = createProvider(BaileysProvider)
+    const adapterProvider = provider
+
 
     createBot({
         flow: adapterFlow,

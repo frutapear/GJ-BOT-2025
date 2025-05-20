@@ -2,6 +2,7 @@ const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@
 require('dotenv').config();
 
 const qrcode = require('qrcode');
+const qrcodeTerminal = require('qrcode-terminal'); // <-- ADD THIS LINE
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 const path = require("path");
@@ -14,14 +15,11 @@ const provider = new BaileysProvider({
 });
 
 
-
-
 provider.on('qr', async (qr) => {
-    provider.on('qr', (qr) => {
-    qrcodeTerminal.generate(qr, { small: true });
+    qrcodeTerminal.generate(qr, { small: true }); // Use the imported qrcodeTerminal
     const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
     console.log(`\n🔗 Abre este enlace en tu navegador para ver el QR como imagen:\n${url}\n`);
-});
+
     const qrImagePath = path.join(__dirname, 'qr.png');
 
     try {
@@ -31,7 +29,6 @@ provider.on('qr', async (qr) => {
         console.error('❌ Error al guardar el código QR como imagen:', err);
     }
 });
-
 
 //DECLARACIONES PATH/OBJECTS//
 const menuPath = path.join(__dirname, "mensajes", "menu.txt")
